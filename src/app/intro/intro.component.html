@@ -1,0 +1,39 @@
+<h1>Player Form</h1>
+<h3>Welcome to the snake game! Please fill in the player form.</h3>
+<form #form="ngForm">
+    Player Name
+    <input name="name" #nameModel="ngModel"
+        required
+        minlength="3"
+        ngModel/>
+    <p *ngIf="nameModel.touched && nameModel.invalid" class="error">  
+        at least 3 chars long
+    </p>
+    <br/>
+    Email
+    <input name="email" #emailModel="ngModel"
+        required
+        type="email"
+        ngModel
+        email/>
+    <p *ngIf="emailModel.touched && emailModel.invalid" class="error">  
+        incorrect email
+    </p>
+    <br/>
+    <!-- Translated
+    <input name="translated"
+        ngModel #translatedModel="ngModel"
+        type="checkbox"/> -->
+    <!-- @if (translatedModel.value) {
+    <select>
+    <option>Polski</option>
+    <option>English</option>
+    <option>Deutsh</option>
+    </select>
+    } -->
+    <button [disabled]="form.invalid"
+    (click)="start(form.form.value)">
+    Start
+    </button>
+
+</form>
